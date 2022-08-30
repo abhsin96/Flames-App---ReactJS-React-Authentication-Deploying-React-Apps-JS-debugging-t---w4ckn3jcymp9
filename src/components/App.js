@@ -8,6 +8,8 @@ const App = () => {
 
   const handleCalculation = () => {
     const pattern = /\W|0-9|_/g;
+    firstName = firstName.toLowerCase();
+    secondName = secondName.toLowerCase();
 
     if (firstName === "" || secondName === "") {
       alert("Please Enter valid input");
