@@ -12,25 +12,52 @@ const App = () => {
       return;
     }
 
-    let map = new Map();
-    for (let i = 0; i < firstName.length; i++) {
-      if (map.has(firstName[i])) {
-        map.set(firstName[i], map.get(firstName[i]) + 1);
-      } else {
-        map.set(firstName[i], 1);
+    let first = firstName.split("");
+    let second = secondName.split("");
+
+    for (let i = 0; i < first.length; i++) {
+      for (let j = 0; j < second.length; j++) {
+        if (first[i] === second[j]) {
+          first[i] = 0;
+          second[j] = 0;
+          break;
+        }
       }
     }
-    for (let i = 0; i < secondName.length; i++) {
-      if (map.has(secondName[i])) {
-        map.set(secondName[i], map.get(secondName[i]) - 1);
-      } else {
-        map.set(secondName[i], 1);
+    let count1 = 0;
+    for (let i = 0; i < first.length; i++) {
+      if (first[i] === 0) {
+        count1++;
       }
     }
-    let sum = 0;
-    map.forEach((value, key) => {
-      sum += value > 0 ? value : value * -1;
-    });
+
+    let count2 = 0;
+    for (let i = 0; i < second.length; i++) {
+      if (second[i] === 0) {
+        count2++;
+      }
+    }
+
+    let sum = first.length + second.length - count1 - count2;
+    // let map = new Map();
+    // for (let i = 0; i < firstName.length; i++) {
+    //   if (map.has(firstName[i])) {
+    //     map.set(firstName[i], map.get(firstName[i]) + 1);
+    //   } else {
+    //     map.set(firstName[i], 1);
+    //   }
+    // }
+    // for (let i = 0; i < secondName.length; i++) {
+    //   if (map.has(secondName[i])) {
+    //     map.set(secondName[i], map.get(secondName[i]) - 1);
+    //   } else {
+    //     map.set(secondName[i], 1);
+    //   }
+    // }
+    // let sum = 0;
+    // map.forEach((value, key) => {
+    //   sum += value > 0 ? value : value * -1;
+    // });
 
     let flame = [
       "Siblings",
