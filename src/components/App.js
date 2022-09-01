@@ -7,10 +7,8 @@ const App = () => {
   const [status, setStatus] = useState("");
 
   const handleCalculation = () => {
-    const pattern = /\W|0-9|_/g;
-
     if (firstName === "" || secondName === "") {
-      alert("Please Enter valid input");
+      setStatus("Please Enter valid input");
       return;
     }
 
@@ -48,14 +46,13 @@ const App = () => {
 
   return (
     <div id="main">
-      <h2 data-testid="answer">{status}</h2>
-      <label>First Name</label>
+      <h3 data-testid="answer">{status}</h3>
+      <label className="">First Name</label>
       <input
         value={firstName}
         type="text"
         data-testid="input1"
         onChange={(e) => setFirstName(e.target.value)}
-        required
       />
       <label>Second Name</label>
       <input
@@ -63,7 +60,6 @@ const App = () => {
         type="text"
         data-testid="input2"
         onChange={(e) => setSecondName(e.target.value)}
-        required
       />
       <button data-testid="calculate_relationship" onClick={handleCalculation}>
         Calculate Relationship Future
